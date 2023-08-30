@@ -1,0 +1,281 @@
+{
+	"info": {
+		"_postman_id": "eeee50b4-23dc-495b-bd0e-a47ed320a287",
+		"name": "mern_eco",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23540337"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\":\"foesh\",\r\n    \"lastname\":\"FM\",\r\n    \"mobile\":\"01062751570\",\r\n    \"email\":\"fouadmogy100@gmail.com\",\r\n    \"password\":\"1052001fouadM\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/user/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \r\n    \"email\":\"fouadmogy100@gmail.com\",\r\n    \"password\":\"1052001fouadM\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NTQzNDg1NDFhMWRhNmI0ZGY1OWM0NCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4MzMyMzYwNCwiZXhwIjoxNjg1OTE1NjA0fQ.d4xkvR0F0Km6lez0MiKqZgKAyS5UECyDYpChTScOWpw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/user/all_users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"all_users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/user/6454348541a1da6b4df59c44",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"6454348541a1da6b4df59c44"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NTU3Y2Q4YWE0NzEzMjRmNDBiN2JhNCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjgzMzI0MTMxLCJleHAiOjE2ODU5MTYxMzF9.QI72BHgf99NTYi5pDfA29sccM9dj6Xns6C0r6vF5QXk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\":\"fouadM\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/user/64557cd8aa471324f40b7ba4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"64557cd8aa471324f40b7ba4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "block user",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NTQzNDg1NDFhMWRhNmI0ZGY1OWM0NCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4MzMyNTA4MywiZXhwIjoxNjg1OTE3MDgzfQ.imt70k6Xw452Kck7ZN_LGoEWUrXC47BaSJo_GHLOios",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/user/block-user/6455815449db529a29ac8fee",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"block-user",
+								"6455815449db529a29ac8fee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unblock user",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NTQzNDg1NDFhMWRhNmI0ZGY1OWM0NCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4MzMyNTA4MywiZXhwIjoxNjg1OTE3MDgzfQ.imt70k6Xw452Kck7ZN_LGoEWUrXC47BaSJo_GHLOios",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\":\"fouad\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/user/unblock-user/6455815449db529a29ac8fee",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"unblock-user",
+								"6455815449db529a29ac8fee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NTU3Y2Q4YWE0NzEzMjRmNDBiN2JhNCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjgzMzI0MzQ3LCJleHAiOjE2ODU5MTYzNDd9.YKXE0b5hquszP7nOTSwFyia_7G9AjJNPtdvucRIzrws",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/user/64557cd8aa471324f40b7ba4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"64557cd8aa471324f40b7ba4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/user/count",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"count"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
