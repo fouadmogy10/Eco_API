@@ -1,55 +1,12 @@
 const AsyncHandler = require("express-async-handler");
-const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const bycrpt = require("bcryptjs");
 const User = require("../models/users.model");
 const Cart = require("../models/cart.model");
-const Product = require("../models/product.model");
 const Coupon = require("../models/coubon.model");
 const Order = require("../models/order.model");
 const validateMongoDbId = require("../utils/validateMongoDbId");
-var uniqid = require("uniqid");
 const { generateRefreshToken } = require("../config/refreshToken");
-// @desc register user
-// @route /api/user/
-//@access public
-// const register = AsyncHandler(async (req, res, next) => {
-//   const { firstname, email, password, lastname, mobile } = req.body;
-//   if (!firstname || !lastname || !mobile || !email || !password) {
-//     res.status(400);
-//     throw new Error("Please include all field");
-//   }
 
-//   //Find if user exist
-//   const userExist = await User.findOne({ email });
-
-//   if (userExist) {
-//     res.status(400);
-//     throw new Error("user already exist");
-//   }
-
-//   //hash password
-//   const salt = await bcrypt.genSalt(10);
-//   const hashedPass = await bcrypt.hash(password, salt);
-
-//   //Create user
-//   const user = await User.create({
-//     firstname,
-//     email,
-//     lastname,
-//     mobile,
-//     email,
-//     password: hashedPass,
-//   });
-
-//   if (user) {
-//     return res.status(201).json({
-//       token: generateToken(user._id,user.role),
-//     });
-//   } else {
-//     throw new Error("Invalid user data");
-//   }
-// });
 const register = AsyncHandler(async (req, res) => {
   /**
    * TODO:Get the email from req.body
