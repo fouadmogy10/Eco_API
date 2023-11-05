@@ -22,8 +22,7 @@ const createProduct = AsyncHandler(async (req, res, next) => {
     const newProduct = await Product.create(req.body);
     res.json(newProduct);
   } catch (error) {
-    res.status(400)
-    throw new Error(error);
+    return res.status(400).json(error)
   }
 });
 
@@ -42,7 +41,7 @@ const getAllProduct = AsyncHandler(async (req, res) => {
     let queryStr = JSON.stringify(queryObj);
     queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
 
-    let query = Product.find(JSON.parse(queryStr));
+    let query = Product.find(JSON.parse(queryStr)).populate("color");
 
     // Sorting
 
@@ -73,10 +72,9 @@ const getAllProduct = AsyncHandler(async (req, res) => {
       if (skip >= productCount) throw new Error("This Page does not exists");
     }
     const product = await query;
-    res.status(200).json(product);
+    return res.status(200).json(product);
   } catch (error) {
-    res.status(400)
-    throw new Error(error);
+    return res.status(400).json(error)
   }
 });
 /*
@@ -97,13 +95,12 @@ const getSingleProduct = AsyncHandler(async (req, res, next) => {
     })
 
     if (!product) {
-      res.status(404).json({ message: "product not found" });
+      return res.status(404).json({ message: "product not found" });
     }
 
-    res.status(200).json(product);
+    return res.status(200).json(product);
   } catch (error) {
-    res.status(400)
-    throw new Error(error);
+    return res.status(400).json(error)
   }
 });
 /*
@@ -118,16 +115,15 @@ const deleteproduct = AsyncHandler(async (req, res, next) => {
     validateMongoDbId(id);
     const product = await Product.findById(id);
     if (!product) {
-      res.status(404).json({ message: "product not found" });
+      return res.status(404).json({ message: "product not found" });
     }
     await Product.findByIdAndDelete(id);
 
-    res.status(200).json({
+    return res.status(200).json({
       message: "product deleted successfuly",
     });
   } catch (error) {
-    res.status(400)
-    throw new Error(error);
+    return res.status(400).json(error)
   }
 });
 /*
@@ -138,7 +134,7 @@ const deleteproduct = AsyncHandler(async (req, res, next) => {
 
 const getproductCount = AsyncHandler(async (req, res, next) => {
   const count = await Product.count();
-  res.status(200).json(count);
+  return res.status(200).json(count);
 });
 
 /*
@@ -155,7 +151,7 @@ const updateproduct = AsyncHandler(async (req, res, next) => {
     validateMongoDbId(id);
     const product = await Product.findById(id);
     if (!product) {
-      res.status(400).json({
+      return res.status(400).json({
         message: "product not found",
       });
     }
@@ -169,10 +165,9 @@ const updateproduct = AsyncHandler(async (req, res, next) => {
     );
 
     // send response to client
-    res.status(200).json(updateproduct);
+    return res.status(200).json(updateproduct);
   } catch (error) {
-    res.status(400)
-    throw new Error(error);
+    return res.status(400).json(error)
   }
 });
 /*
@@ -186,7 +181,6 @@ const addToWishlist = AsyncHandler(async (req, res) => {
   try {
     const user = await User.findById(id);
     const alreadyadded = user.wishlist.find((id) => id.toString() === prodId);
-    console.log(alreadyadded,"allll");
     if (alreadyadded) {
       let user = await User.findByIdAndUpdate(
         id,
@@ -200,7 +194,7 @@ const addToWishlist = AsyncHandler(async (req, res) => {
       const findUser = await User.findById(id).select("-password").select("-refreshToken")
     .select("-email").select("-firstname").select("-lastname").select("-refreshToken")
     .populate("wishlist");
-    res.status(200).json(findUser);
+    return res.status(200).json(findUser);
     } else {
       let user = await User.findByIdAndUpdate(
         id,
@@ -214,11 +208,10 @@ const addToWishlist = AsyncHandler(async (req, res) => {
       const findUser = await User.findById(id).select("-password").select("-refreshToken")
     .select("-email").select("-firstname").select("-lastname").select("-refreshToken")
     .populate("wishlist");
-    res.status(200).json(findUser);
+    return res.status(200).json(findUser);
     }
   } catch (error) {
-    res.status(400)
-    throw new Error(error);
+    return res.status(400).json(error)
   }
 });
 
@@ -281,8 +274,7 @@ const rating = AsyncHandler(async (req, res) => {
     })
     res.json(finalproduct);
   } catch (error) {
-    res.status(400)
-    throw new Error(error);
+    return res.status(400).json(error)
   }
 });
 const uploadImages = AsyncHandler(async (req, res) => {
@@ -309,8 +301,7 @@ const uploadImages = AsyncHandler(async (req, res) => {
       )
       res.json(findProduct)
   } catch (error) {
-    res.status(400)
-    throw new Error(error)
+    return res.status(400).json(error)
   }
 });
 const deleteImages = AsyncHandler(async (req, res) => {
@@ -319,8 +310,7 @@ const deleteImages = AsyncHandler(async (req, res) => {
     const deleted = cloudinaryDeleteImg(id, "images");
     res.json({ message: "Deleted" });
   } catch (error) {
-    res.status(400)
-    throw new Error(error);
+    return res.status(400).json(error)
   }
 });
 module.exports = {
